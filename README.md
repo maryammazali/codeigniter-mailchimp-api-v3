@@ -10,16 +10,16 @@ Drag and drop the **application/libraries/Mailchimp.php** and **application/conf
 Enter your API key in the **application/config/mailchimp.php** config file
 
 ## Making a Request
-Making a request is simple. You can make a request to any of the endpoints supported by v3 of the MailChimp API. Simply pass the request type (GET,POST,PATCH,DELETE) and the Endpoint to the **call** function.
+Making a request is simple. You can make a request to any of the Endpoints supported by v3 of the MailChimp API. Simply pass the request type (GET,POST,PATCH,DELETE) and the Endpoint to the **call** function.
 
-For example, to GET a list of your campaigns:
+For example, to **GET** a list of your **campaigns**:
 
 ```php
 $campaigns 	= $this->mailchimp->call('GET', 'campaigns');
 ```
 
 ## Passing Arguments
-You can pass an array of arguments as a third parameter. For example, to GET a list of your campaigns limited to just **5** results and only **sent** campaigns:
+You can pass an array of arguments as a third parameter. For example, to **GET** a list of your **campaigns** limited to just **5** results and only **sent** campaigns:
 
 ```php
 $campaigns 	= $this->mailchimp->call('GET', 'campaigns', array('count' => 5, 'status' => 'sent'));
