@@ -18,6 +18,13 @@ For example, to GET a list of your campaigns:
 $campaigns 	= $this->mailchimp->call('GET', 'campaigns');
 ```
 
+## Passing Arguments
+You can pass an array of arguments as a third parameter. For example, to GET a list of your campaigns limited to just **5** results and only **sent** campaigns:
+
+```php
+$campaigns 	= $this->mailchimp->call('GET', 'campaigns', array('count' => 5, 'status' => 'sent'));
+```
+
 ## Passing API Key Manually
 You can pass your API key directly when initializing the library. This is useful if you are working with multiple MailChimp accounts.
 
