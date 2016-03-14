@@ -1,5 +1,5 @@
 # CodeIgniter Mailchimp API v3 REST Client
-A simple REST client for CodeIngniter for interacting with v3 of the MailChimp API.
+A simple REST client for CodeIgniter for interacting with v3 of the MailChimp API.
 
 ## Requirements
 1. CodeIgniter 3.0+
