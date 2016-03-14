@@ -52,6 +52,10 @@ class Mailchimp {
 
   		}
 
+      // Replace <dc> with correct datacenter
+      list(, $datacentre) = explode('-', $this->_api_key);
+      $this->_api_endpoint = str_replace('<dc>', $datacentre, $this->_api_endpoint);
+
   }
 
   //----------------------------------------------------------------------------
@@ -64,8 +68,8 @@ class Mailchimp {
   //----------------------------------------------------------------------------
   public function initialize( $config = array() ) {
 
-    $this->_api_key      = $config['api_key'];
-    $this->_api_endpoint = $config['api_endpoint'];
+    if ( $config['api_key'] ) { $this->_api_key            = $config['api_key']; }
+    if ( $config['api_endpoint'] ) { $this->_api_endpoint  = $config['api_endpoint']; }
 
   }
 
@@ -99,9 +103,9 @@ class Mailchimp {
 
     if ( $httpVerb == 'GET' ) {
       $params   = http_build_query($args);
-      $url      = $this->api_endpoint . $method . '?' . $params;
+      $url      = $this->_api_endpoint . $method . '?' . $params;
     } else {
-      $url      = $this->api_endpoint . $method;
+      $url      = $this->_api_endpoint . $method;
     }
 
     return $url;
@@ -125,7 +129,7 @@ class Mailchimp {
       $ch     = curl_init();
       curl_setopt($ch, CURLOPT_URL, $url);
       curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
-      curl_setopt($ch, CURLOPT_USERPWD, "user:" . $this->api_key);
+      curl_setopt($ch, CURLOPT_USERPWD, "user:" . $this->_api_key);
       curl_setopt($ch, CURLOPT_USERAGENT, 'PHP-MCAPI/3.0');
       curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
       curl_setopt($ch, CURLOPT_TIMEOUT, 10);
