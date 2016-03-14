@@ -2,7 +2,8 @@
 A simple REST client for CodeIgniter for interacting with v3 of the MailChimp API.
 
 ## Requirements
-1. CodeIgniter 3.0+
+1. PHP 5.4+
+2. CodeIgniter 3.0+
 
 ## Installation
 Drag and drop the **libraries/Mailchimp.php** and **config/mailchimp.php** files into your application's directories.
